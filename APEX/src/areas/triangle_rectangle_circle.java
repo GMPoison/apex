@@ -139,7 +139,3 @@ public class triangle_rectangle_circle {
 	
 
 } //public class triangle_rectangle_circle
-	
-	
-	
-	
