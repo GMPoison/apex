@@ -11,6 +11,7 @@ public class triangle_rectangle_circle {
 				
 		String varName;
         System.out.print("Enter your name: ");
+		@SuppressWarnings("resource")
 		Scanner stringScanner = new Scanner(System.in); //string scanner
         varName = stringScanner.nextLine(); 
                		       
@@ -22,6 +23,7 @@ public class triangle_rectangle_circle {
 		transChar = stringScanner.nextLine(); //transChar = transition to char
 		char caseSelector = transChar.charAt(0);
 											
+		@SuppressWarnings("resource")
 		Scanner numScanner = new Scanner(System.in); //number scanner
 				
 		switch (caseSelector){
@@ -71,6 +73,8 @@ public class triangle_rectangle_circle {
 				double s = (tSideA + tSideB + tSideC) / 2; 
 		        double x = ((s) * (s - tSideA) * (s - tSideB) * (s - tSideC)); 
 		        double tArea = Math.sqrt(x);
+		        
+		        double tPerim = (tSideA + tSideB + tSideC);
 				
 		        //rounding
 		        tArea = Math.round(tArea * 100); 
@@ -80,19 +84,23 @@ public class triangle_rectangle_circle {
 				double compAC = tSideA + tSideC; //sum of sides a & c
 				double compBC = tSideB + tSideC; //sum of sides b & c
 				
-				if(tSideC > compAB){ //if side c (tSideC) is greater than sum of sides a & b (compAB)
+				if(tSideC >= compAB){ //if side c (tSideC) is greater than sum of sides a & b (compAB)
 					System.out.println();
-					System.out.println("Error: Third side cannot be greater than the sum of the other two sides");
-				} else if(tSideB > compAC){ //if side b (tSideB) is greater than sum of sides a & c (compAC)
+					System.out.println("Error: - Third side cannot be greater than or equal to the sum of the other two sides");
+					System.out.println("       - Perimeter not available");
+				} else if(tSideB >= compAC){ //if side b (tSideB) is greater than sum of sides a & c (compAC)
 					System.out.println();
-					System.out.println("Error: Second side cannot be greater than the sum of the other two sides");
-				} else if(tSideA > compBC){ //if side a (tSideA) is greater than sum of sides b & c (compBC)
+					System.out.println("Error: - Second side cannot be greater than or equal to the sum of the other two sides");
+					System.out.println("       - Perimeter not available");
+				} else if(tSideA >= compBC){ //if side a (tSideA) is greater than sum of sides b & c (compBC)
 					System.out.println();
-					System.out.println("Error: First side cannot be greater than the sum of the other two sides");
+					System.out.println("Error: - First side cannot be greater than or equal to the sum of the other two sides");
+					System.out.println("       - Perimeter not available");
 				} else{ //valid option
 					System.out.println();
 					System.out.println("-----------------------------");
 					System.out.println("Area of the triangle is " + tArea + " units");
+					System.out.println("Perimeter of the triangle is " + tPerim + " units");
 					System.out.println("-----------------------------");
 				}
 								
@@ -128,14 +136,13 @@ public class triangle_rectangle_circle {
 				break;
 							
 			} //switch (caseSelector)
-		
-			numScanner.close();
+				
         } //for
         	
         	System.out.println();
            	System.out.println("This program was run by: " + varName);
-           	stringScanner.close();
+          
 	} //main
 	
-
 } //public class triangle_rectangle_circle
+
