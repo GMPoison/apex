@@ -15,7 +15,7 @@ public class triangle_rectangle_circle {
 		Scanner stringScanner = new Scanner(System.in); //string scanner
         varName = stringScanner.nextLine(); 
                		       
-        for (int loop = 0; loop <4; ++loop){
+        for (int loop = 0; loop <6; ++loop){
         
         String transChar;
         System.out.println();
@@ -33,15 +33,15 @@ public class triangle_rectangle_circle {
 			case 'r':
 			case 'R':
 				
-				double rHeight;
+				double rLength;
 				double rWidth;
 				
-				System.out.print("Please enter height: ");
-				rHeight = numScanner.nextDouble();
-				System.out.println("Please enter width: ");
+				System.out.print("Please enter width: ");
 				rWidth = numScanner.nextDouble();
+				System.out.println("Please enter length: ");
+				rLength = numScanner.nextDouble();
 				
-				double rArea = (rHeight * rWidth);
+				double rArea = (rLength * rWidth);
 				
 				//rounding
 				rArea = Math.round(rArea * 100);
@@ -136,12 +136,12 @@ public class triangle_rectangle_circle {
 				break;
 							
 			} //switch (caseSelector)
-			numScanner.close();		
+				
         } //for
         	
         	System.out.println();
            	System.out.println("This program was run by: " + varName);
-            stringScanner.close();
+          
 	} //main
 	
 } //public class triangle_rectangle_circle
