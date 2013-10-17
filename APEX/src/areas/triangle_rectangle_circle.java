@@ -11,7 +11,6 @@ public class triangle_rectangle_circle {
 				
 		String varName;
         System.out.print("Enter your name: ");
-		@SuppressWarnings("resource")
 		Scanner stringScanner = new Scanner(System.in); //string scanner
         varName = stringScanner.nextLine(); 
                		       
@@ -23,7 +22,6 @@ public class triangle_rectangle_circle {
 		transChar = stringScanner.nextLine(); //transChar = transition to char
 		char caseSelector = transChar.charAt(0);
 											
-		@SuppressWarnings("resource")
 		Scanner numScanner = new Scanner(System.in); //number scanner
 				
 		switch (caseSelector){
