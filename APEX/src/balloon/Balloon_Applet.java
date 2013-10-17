@@ -7,28 +7,50 @@ import java.awt.event.*;//import java.awt.event.*;  goes with ActionListener and
 public class Balloon_Applet extends Applet
                              implements ActionListener//import java.awt.event.*;  goes with ActionListener and actionPerformed
 {//variable & object declarations and initializations                                        
-    Button up, left, down, right;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L; //serial id
+	Button north, west, south, east, northeast, northwest, southeast, southwest;
     public static final int DISPLAY_WIDTH = 600;// this is a constant
     private int startX = DISPLAY_WIDTH/2;
     private int startY = DISPLAY_WIDTH/2;
-    
+
+    public static final boolean CONSOLE_LOGGING = true;
+        
     public void init()
     {
-    	left = new Button ("Left");
-        add (left);
-        left.addActionListener (this); 
+    	west = new Button ("West");
+        add (west);
+        west.addActionListener (this); 
     	
-        up = new Button ("Up");
-        add (up);
-        up.addActionListener (this); 
+        northwest = new Button ("Northwest");
+        add (northwest);
+        northwest.addActionListener (this); 
         
-        down = new Button ("Down");
-        add (down);
-        down.addActionListener (this); 
+        northeast = new Button ("Northeast");
+        add (northeast);
+        northeast.addActionListener (this); 
+                
+        north = new Button ("North");
+        add (north);
+        north.addActionListener (this); 
         
-        right = new Button ("Right");
-        add (right);
-        right.addActionListener (this);  
+        south = new Button ("South");
+        add (south);
+        south.addActionListener (this); 
+                 
+        southwest = new Button ("Southwest");
+        add (southwest);
+        southwest.addActionListener (this);
+        
+        southeast = new Button ("Southeast");
+        add (southeast);
+        south.addActionListener (this); 
+                
+        east = new Button ("East");
+        add (east);
+        east.addActionListener (this);  
           
         
     }// endInit 
@@ -43,30 +65,63 @@ public class Balloon_Applet extends Applet
     
     public void actionPerformed(ActionEvent clic)//import java.awt.event.*;  goes with ActionListener and actionPerformed
     {
-        if ( clic.getSource()== right)
-            doRight();
-        if ( clic.getSource()== left)
-            doLeft();
-        if ( clic.getSource()== up)
-            doUp();
-        if ( clic.getSource()== down)
-            doDown();
+    	if (clic.getSource()== west)
+            doWest();
+    	else if (clic.getSource()== northwest)
+            doNorthwest();
+    	else if (clic.getSource()== northeast)
+            doSoutheast();
+    	else if (clic.getSource()== north)
+            doNorth();
+    	else if (clic.getSource()== south)
+            doSouth();
+    	else if (clic.getSource()== southwest)
+            doWest();
+    	else if (clic.getSource()== southeast)
+        	doEast();
+    	else if (clic.getSource()== east)
+            doEast();
+                   
         repaint();
+        
+        if (CONSOLE_LOGGING)
+        	System.out.println(startX + " " + startY);
+            
     }//endActionPerformed
     
-    public void doLeft()
+    public void doWest()
     {
         startX-=50;
     }
-    public void doUp()
+    public void doNorthwest()
+    {
+        startY-=50;
+        startX-=50;
+    }
+    public void doNortheast()
+    {
+    	startX+=50;
+    	startY-=50;
+        
+    }
+    public void doNorth()
     {
         startY-=50;
     }
-    public void doDown()
+    public void doSouth()
     {
         startY+=50;
     }
-    public void doRight()
+    public void doSoutwest()
+    {
+        startY+=50;
+        startX-=50;
+    }
+    public void doSoutheast()
+    {
+        startX+=50;
+    }
+    public void doEast()
     {
         startX+=50;
     }
