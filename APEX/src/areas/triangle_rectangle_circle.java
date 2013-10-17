@@ -134,12 +134,12 @@ public class triangle_rectangle_circle {
 				break;
 							
 			} //switch (caseSelector)
-				
+		numScanner.close();	
         } //for
         	
         	System.out.println();
            	System.out.println("This program was run by: " + varName);
-          
+           	stringScanner.close();	
 	} //main
 	
 } //public class triangle_rectangle_circle
