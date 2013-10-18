@@ -7,9 +7,7 @@ import java.awt.event.*;//import java.awt.event.*;  goes with ActionListener and
 public class Balloon_Applet extends Applet
                              implements ActionListener//import java.awt.event.*;  goes with ActionListener and actionPerformed
 {//variable & object declarations and initializations                                        
-    /**
-	 * 
-	 */
+   
 	private static final long serialVersionUID = 1L; //serial id
 	Button north, west, south, east, northeast, northwest, southeast, southwest;
     public static final int DISPLAY_WIDTH = 600;// this is a constant
@@ -46,7 +44,7 @@ public class Balloon_Applet extends Applet
         
         southeast = new Button ("Southeast");
         add (southeast);
-        south.addActionListener (this); 
+        southeast.addActionListener (this); 
                 
         east = new Button ("East");
         add (east);
@@ -70,18 +68,18 @@ public class Balloon_Applet extends Applet
     	else if (clic.getSource()== northwest)
             doNorthwest();
     	else if (clic.getSource()== northeast)
-            doSoutheast();
+            doNortheast();
     	else if (clic.getSource()== north)
             doNorth();
     	else if (clic.getSource()== south)
             doSouth();
     	else if (clic.getSource()== southwest)
-            doWest();
+            doSouthwest();
     	else if (clic.getSource()== southeast)
-        	doEast();
+        	doSoutheast();
     	else if (clic.getSource()== east)
             doEast();
-                   
+           	   	
         repaint();
         
         if (CONSOLE_LOGGING)
@@ -100,9 +98,8 @@ public class Balloon_Applet extends Applet
     }
     public void doNortheast()
     {
-    	startX+=50;
     	startY-=50;
-        
+    	startX+=50;
     }
     public void doNorth()
     {
@@ -112,26 +109,18 @@ public class Balloon_Applet extends Applet
     {
         startY+=50;
     }
-    public void doSoutwest()
+    public void doSouthwest()
     {
         startY+=50;
         startX-=50;
     }
     public void doSoutheast()
     {
-        startX+=50;
+    	startY+=50;
+    	startX+=50;
     }
     public void doEast()
     {
         startX+=50;
     }
 }   //endProgram    
-
-
-
-
-
-
-
-
-
