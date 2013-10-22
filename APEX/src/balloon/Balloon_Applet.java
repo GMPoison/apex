@@ -14,11 +14,11 @@ public class Balloon_Applet extends Applet
     public static final int DISPLAY_WIDTH = 600;
     public static final int DISPLAY_HEIGHT = 600;
     
-    private int startX = DISPLAY_WIDTH/2;
-    private int startY = DISPLAY_HEIGHT/2;
+    public int startX = DISPLAY_WIDTH/2;
+    public int startY = DISPLAY_HEIGHT/2;
         
-    public int boundX = DISPLAY_WIDTH-50;
-    public int boundY = DISPLAY_HEIGHT-76;
+    public int boundX = DISPLAY_WIDTH;
+    public int boundY = DISPLAY_HEIGHT;
 
     public static final boolean CONSOLE_LOGGING = true;
         
@@ -68,7 +68,7 @@ public class Balloon_Applet extends Applet
         setBackground(Color.CYAN);
         g.setColor(Color.BLACK);
         g.fillOval(startX,startY,50,70);
-        g.drawLine(startX+25,startY+70,boundX-250,boundY+100);
+        g.drawLine(startX+25,startY+70,boundX-275,boundY+100);
        
     }//endPaint
     
