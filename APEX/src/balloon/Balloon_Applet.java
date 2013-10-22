@@ -5,10 +5,11 @@ import java.applet.*;
 import java.awt.event.*;//import java.awt.event.*;  goes with ActionListener and actionPerformed
 
 public class Balloon_Applet extends Applet
-                             implements ActionListener//import java.awt.event.*;  goes with ActionListener and actionPerformed
-{//variable & object declarations and initializations                                        
-   
+	
+implements ActionListener{  
+	
     private static final long serialVersionUID = 1L; //serial id
+    
     Button north, west, south, east, northeast, northwest, southeast, southwest, center;
     
     public static final int DISPLAY_WIDTH = 600;
@@ -22,8 +23,8 @@ public class Balloon_Applet extends Applet
 
     public static final boolean CONSOLE_LOGGING = true;
         
-    public void init()
-    {
+    public void init(){
+    	
         west = new Button ("West");
         add (west);
         west.addActionListener (this); 
@@ -59,11 +60,11 @@ public class Balloon_Applet extends Applet
         east = new Button ("East");
         add (east);
         east.addActionListener (this);  
-          
-        
+    
     }// endInit 
-    public void paint(Graphics g)
-    {
+    
+    public void paint(Graphics g){
+    	
     	resize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
         setBackground(Color.CYAN);
         g.setColor(Color.BLACK);
@@ -72,9 +73,9 @@ public class Balloon_Applet extends Applet
        
     }//endPaint
     
-    public void actionPerformed(ActionEvent clic)//import java.awt.event.*;  goes with ActionListener and actionPerformed
-    {
-            if (clic.getSource()== west)
+    public void actionPerformed(ActionEvent clic){
+            
+    		if (clic.getSource()== west)
             doWest();
             else if (clic.getSource()== northwest)
             doNorthwest();
@@ -92,62 +93,62 @@ public class Balloon_Applet extends Applet
             doSoutheast();
             else if (clic.getSource()== east)
             doEast();
-                              
-        repaint();
+            
+    		repaint();
         
-        if (CONSOLE_LOGGING)
+    		if (CONSOLE_LOGGING)
                 System.out.println(startX + " " + startY);
             
     }//endActionPerformed
     
-    public void doWest()
-    {
-            if (startX-10 >= 0)
+    public void doWest(){
+    	
+    	    if (startX-10 >= 0)
                     startX-=10;
             else
                 startX -= Math.abs(0+startX);
     }
-    public void doNorthwest() 
-    {
+    public void doNorthwest(){
+    	
             doNorth();
             doWest();
     }
-    public void doNortheast() 
-    {
+    public void doNortheast(){
+    	
             doNorth();
             doEast();
     }
-    public void doNorth()
-    {
+    public void doNorth(){
+    	
             if (startY-10 >= 0)
                     startY-=10;
             else
                 startY -= Math.abs(0+startY);
     }
-    public void doCenter()
-    {
+    public void doCenter(){
+    	
             startX=boundX/2;
             startY=boundY/2;
     }
-    public void doSouth() 
-    {
+    public void doSouth(){
+    	
             if (startY+10 <= boundY)
                     startY+=10;
             else
                startY += Math.abs(boundY-startY);
     }
-    public void doSouthwest() 
-    {
+    public void doSouthwest(){
+    	
             doSouth();
             doWest();
     }
-    public void doSoutheast() 
-    {
+    public void doSoutheast(){
+    	
             doSouth();
             doEast();
     }
-    public void doEast()
-    {
+    public void doEast(){
+    	
             if (startX+10 <= boundX)
                     startX+=10;
             else
