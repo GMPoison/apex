@@ -69,7 +69,7 @@ implements ActionListener{
         setBackground(Color.CYAN);
         g.setColor(Color.BLACK);
         g.fillOval(startX,startY,50,70);
-        g.drawLine(startX+25,startY+70,boundX-275,boundY+100);
+        g.drawLine(startX+25,startY+70,boundX-275,boundY);
        
     }//endPaint
     
