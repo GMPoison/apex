@@ -2,25 +2,24 @@ package balloon;
 
 import java.awt.*;
 import java.applet.*;
-import java.awt.event.*;//import java.awt.event.*;  goes with ActionListener and actionPerformed
+import java.awt.event.*;
 
 public class Balloon_Applet extends Applet
 	
 implements ActionListener{  
 	
-    private static final long serialVersionUID = 1L; //serial id
+    private static final long serialVersionUID = 1L; 
     
     Button north, west, south, east, northeast, northwest, southeast, southwest, center;
+    Button increaseWidth, decreaseWidth, increaseHeight, decreaseHeight;
     
-    public static final int DISPLAY_WIDTH = 600;
-    public static final int DISPLAY_HEIGHT = 600;
+    public int displayWidth = 600;
+    public int displayHeight = 600;
+    public int boundX = displayWidth-50;
+    public int boundY = displayHeight-76;
+    public int startX = boundX/2;
+    public int startY = boundY/2;
     
-    public int startX = DISPLAY_WIDTH/2;
-    public int startY = DISPLAY_HEIGHT/2;
-        
-    public int boundX = DISPLAY_WIDTH;
-    public int boundY = DISPLAY_HEIGHT;
-
     public static final boolean CONSOLE_LOGGING = true;
         
     public void init(){
@@ -59,99 +58,149 @@ implements ActionListener{
                 
         east = new Button ("East");
         add (east);
-        east.addActionListener (this);  
+        east.addActionListener (this); 
+        
+        increaseWidth = new Button ("Increase Width");
+        add (increaseWidth);
+        increaseWidth.addActionListener (this); 
+        
+        decreaseWidth = new Button ("Decrease Width");
+        add (decreaseWidth);
+        decreaseWidth.addActionListener (this); 
+        
+        increaseHeight = new Button ("Increase Height");
+        add (increaseHeight);
+        increaseHeight.addActionListener (this); 
+        
+        decreaseHeight = new Button ("Decrease Height");
+        add (decreaseHeight);
+        decreaseHeight.addActionListener (this); 
     
-    }// endInit 
+    } // end Init 
     
     public void paint(Graphics g){
     	
-    	resize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-        setBackground(Color.CYAN);
-        g.setColor(Color.BLACK);
+    	resize(displayWidth, displayHeight);
+        setBackground(Color.BLACK);
+        g.setColor(Color.WHITE);
         g.fillOval(startX,startY,50,70);
-        g.drawLine(startX+25,startY+70,boundX-275,boundY);
-       
-    }//endPaint
+        g.drawLine(startX+25,startY+70,displayWidth/2, displayHeight);
+        
+    } //end Paint
     
-    public void actionPerformed(ActionEvent clic){
+    public void actionPerformed(ActionEvent click){
             
-    		if (clic.getSource()== west)
+    		if (click.getSource()== west)
             doWest();
-            else if (clic.getSource()== northwest)
+            else if (click.getSource()== northwest)
             doNorthwest();
-            else if (clic.getSource()== northeast)
+            else if (click.getSource()== northeast)
             doNortheast();
-            else if (clic.getSource()== north)
+            else if (click.getSource()== north)
             doNorth();
-            else if (clic.getSource()== center)
+            else if (click.getSource()== center)
             doCenter();
-            else if (clic.getSource()== south)
+            else if (click.getSource()== south)
             doSouth();
-            else if (clic.getSource()== southwest)
+            else if (click.getSource()== southwest)
             doSouthwest();
-            else if (clic.getSource()== southeast)
+            else if (click.getSource()== southeast)
             doSoutheast();
-            else if (clic.getSource()== east)
+            else if (click.getSource()== east)
             doEast();
-            
+            else if (click.getSource()== increaseWidth)
+            doincreaseWidth();
+            else if (click.getSource()== decreaseWidth)
+            dodecreaseWidth();
+            else if (click.getSource()== increaseHeight)
+            doincreaseHeight();
+            else if (click.getSource()== decreaseHeight)
+            dodecreaseHeight();
+                        
     		repaint();
         
     		if (CONSOLE_LOGGING)
                 System.out.println(startX + " " + startY);
             
-    }//endActionPerformed
+    } //end ActionPerformed
     
-    public void doWest(){
-    	
-    	    if (startX-10 >= 0)
-                    startX-=10;
-            else
-                startX -= Math.abs(0+startX);
-    }
-    public void doNorthwest(){
-    	
-            doNorth();
-            doWest();
-    }
-    public void doNortheast(){
-    	
-            doNorth();
-            doEast();
-    }
     public void doNorth(){
     	
-            if (startY-10 >= 0)
-                    startY-=10;
-            else
-                startY -= Math.abs(0+startY);
+        if (startY-10 >= 0)
+            startY-=10;
+        else
+            startY -= Math.abs(0+startY);
     }
-    public void doCenter(){
+    public void doWest(){
     	
-            startX=boundX/2;
-            startY=boundY/2;
-    }
-    public void doSouth(){
-    	
-            if (startY+10 <= boundY)
-                    startY+=10;
-            else
-               startY += Math.abs(boundY-startY);
-    }
-    public void doSouthwest(){
-    	
-            doSouth();
-            doWest();
-    }
-    public void doSoutheast(){
-    	
-            doSouth();
-            doEast();
+    	if (startX-10 >= 0)
+            startX-=10;
+        else
+            startX -= Math.abs(0+startX);
     }
     public void doEast(){
     	
-            if (startX+10 <= boundX)
-                    startX+=10;
-            else
-               startX += Math.abs(boundX-startX);
+        if (startX+10 <= boundX)
+            startX+=10;
+        else
+            startX += Math.abs(boundX-startX);
     }
-}   
+    public void doSouth(){
+    	
+    	if (startY+10 <= boundY)
+    		startY+=10;
+    	else
+    		startY += Math.abs(boundY-startY);
+    }
+    public void doNorthwest(){
+    	
+    	doNorth();
+        doWest();
+    }
+    public void doNortheast(){
+    	
+        doNorth();
+        doEast();
+    }
+    public void doSouthwest(){
+    	
+        doSouth();
+        doWest();
+    }
+    public void doSoutheast(){
+    	
+        doSouth();
+        doEast();
+    }
+    public void doincreaseWidth(){
+    	
+    	displayWidth += 25;
+    	boundX = displayWidth - 50;
+     
+    }
+    public void dodecreaseWidth(){
+    	
+    	displayWidth -= 25;
+    	boundX = displayWidth - 50;
+    
+    }
+    public void doincreaseHeight(){
+	
+    	displayHeight += 25;
+    	boundY = displayHeight - 70;
+    
+    }
+    public void dodecreaseHeight(){
+	
+    	displayHeight -= 25;
+    	boundY = displayHeight - 70;
+        	
+    }
+    public void doCenter(){
+	
+    	startX=boundX/2;
+        startY=boundY/2;
+    
+    }
+    
+ } //end ActionList   
