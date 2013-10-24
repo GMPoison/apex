@@ -12,6 +12,7 @@ implements ActionListener{
     
     Button north, west, south, east, northeast, northwest, southeast, southwest, center;
     Button increaseWidth, decreaseWidth, increaseHeight, decreaseHeight;
+    Button UL, UR, LL, LR;
     
     public int displayWidth = 600;
     public int displayHeight = 600;
@@ -75,6 +76,22 @@ implements ActionListener{
         decreaseHeight = new Button ("Decrease Height");
         add (decreaseHeight);
         decreaseHeight.addActionListener (this); 
+        
+        UL = new Button ("Upper Left Corner");
+        add (UL);
+        UL.addActionListener (this);
+        
+        UR = new Button ("Upper Right Corner");
+        add (UR);
+        UR.addActionListener (this);
+        
+        LL = new Button ("Lower Left Corner");
+        add (LL);
+        LL.addActionListener (this);
+        
+        LR = new Button ("Lower Right Corner");
+        add (LR);
+        LR.addActionListener (this);
     
     } // end Init 
     
@@ -91,31 +108,39 @@ implements ActionListener{
     public void actionPerformed(ActionEvent click){
             
     		if (click.getSource()== west)
-            doWest();
+    			doWest();
             else if (click.getSource()== northwest)
-            doNorthwest();
+            	doNorthwest();
             else if (click.getSource()== northeast)
-            doNortheast();
+            	doNortheast();
             else if (click.getSource()== north)
-            doNorth();
+            	doNorth();
             else if (click.getSource()== center)
-            doCenter();
+            	doCenter();
             else if (click.getSource()== south)
-            doSouth();
+            	doSouth();
             else if (click.getSource()== southwest)
-            doSouthwest();
+            	doSouthwest();
             else if (click.getSource()== southeast)
-            doSoutheast();
+            	doSoutheast();
             else if (click.getSource()== east)
-            doEast();
+            	doEast();
             else if (click.getSource()== increaseWidth)
-            doincreaseWidth();
+            	doincreaseWidth();
             else if (click.getSource()== decreaseWidth)
-            dodecreaseWidth();
+            	dodecreaseWidth();
             else if (click.getSource()== increaseHeight)
-            doincreaseHeight();
+            	doincreaseHeight();
             else if (click.getSource()== decreaseHeight)
-            dodecreaseHeight();
+            	dodecreaseHeight();
+            else if (click.getSource()== UL)
+            	doUpperLeftCorner();
+            else if (click.getSource()== UR)
+                doUpperRightCorner();
+            else if (click.getSource()== LL)
+                doLowerLeftCorner();
+            else if (click.getSource()== LR)
+                doLowerRightCorner();
                         
     		repaint();
         
@@ -202,5 +227,29 @@ implements ActionListener{
         startY=boundY/2;
     
     }
+    public void doUpperLeftCorner(){
+    	
+    	startX = 0;
+    	startY = 0;
+    	
+    }
+	public void doUpperRightCorner(){
+    	
+		startX = boundX;
+		startY = 0;
+		
+    }
+ 	public void doLowerLeftCorner(){
+ 	
+ 		startX = 0;
+ 		startY = boundY;
+ 		
+ 	}
+ 	public void doLowerRightCorner(){
+ 	
+ 		startX = boundX;
+ 		startY = boundY;
+ 		
+ 	}
     
- } //end ActionList   
+ } //end ActionListener   
