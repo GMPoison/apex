@@ -3,7 +3,7 @@ package ton_of_bricks;
 import java.applet.Applet;
 import java.awt.*;
 
-public class ton_of_bricks_for extends Applet{
+public class Ton_of_bricks_for extends Applet{
 	
    private static final long serialVersionUID = 1L;
   
@@ -21,12 +21,12 @@ public class ton_of_bricks_for extends Applet{
    		int y = START_Y;
       
    		setBackground(Color.BLACK);
-   		g.setColor(Color.WHITE); 
+   		g.setColor(Color.MAGENTA); 
       
    		for (int row = 1; row <= DISPLAY_WIDTH; row++){ //while row is less than windows width, increase rows
 
    			for (int col = 1; col <= DISPLAY_HEIGHT; col++){ //while col is less than windows height, increase cols 
-        	    
+        	         	 
    				g.fillRect (x, y, BRICK_WIDTH, BRICK_HEIGHT); //drawing bricks
             
    				x += BRICK_WIDTH + GAP; //generates columns
