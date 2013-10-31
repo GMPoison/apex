@@ -3,7 +3,7 @@ package ton_of_bricks;
 import java.applet.Applet;
 import java.awt.*;
 
-public class ton_of_bricks extends Applet{
+public class ton_of_bricks_for extends Applet{
 	
    private static final long serialVersionUID = 1L;
   
