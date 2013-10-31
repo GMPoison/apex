@@ -4,7 +4,7 @@ import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class ton_of_bricks_while extends Applet{
+public class Ton_of_bricks_doWhile extends Applet{
 
 		private static final long serialVersionUID = 1L;
 

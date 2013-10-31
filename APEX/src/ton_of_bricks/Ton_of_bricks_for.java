@@ -3,15 +3,15 @@ package ton_of_bricks;
 import java.applet.Applet;
 import java.awt.*;
 
-public class ton_of_bricks extends Applet{
+public class Ton_of_bricks_for extends Applet{
 	
    private static final long serialVersionUID = 1L;
   
    public static final int START_X = 0;
    public static final int START_Y = 0;
-   public static final int BRICK_WIDTH = 32;
-   public static final int BRICK_HEIGHT = 16;
-   public static final int GAP = 4;
+   public static final int BRICK_WIDTH = 30;
+   public static final int BRICK_HEIGHT = 15;
+   public static final int GAP = 5;
    public static final int DISPLAY_WIDTH = 600;
    public static final int DISPLAY_HEIGHT = 600;
 
