@@ -9,21 +9,25 @@ public class Ton_of_bricks_for extends Applet{
   
    public static final int START_X = 0;
    public static final int START_Y = 0;
-   public static final int BRICK_WIDTH = 30;
-   public static final int BRICK_HEIGHT = 15;
+   public static final int BRICK_WIDTH = 60;
+   public static final int BRICK_HEIGHT = 30;
    public static final int DISPLAY_WIDTH = 600;
    public static final int DISPLAY_HEIGHT = 600;
-   public static final int GAP = 5;
+   public static final int GAP = 10;
 
-   	public void paint(Graphics g){
+   public void init(){
+	   resize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+	   setBackground(Color.BLACK);
+   }
+   
+   public void paint(Graphics g){
 	   
-   		int x = START_X;
-   		int y = START_Y;
+   	   int x = START_X;
+   	   int y = START_Y;
+   		  	   
+   	   g.setColor(Color.GREEN); 
       
-   		setBackground(Color.BLACK);
-   		g.setColor(Color.MAGENTA); 
-      
-   		for (int row = 1; row <= DISPLAY_WIDTH; row++){ //while row is less than windows width, increase rows
+   	   for (int row = 1; row <= DISPLAY_WIDTH; row++){ //while row is less than windows width, increase rows
 
    			for (int col = 1; col <= DISPLAY_HEIGHT; col++){ //while col is less than windows height, increase cols 
         	         	 
@@ -39,6 +43,6 @@ public class Ton_of_bricks_for extends Applet{
 
    				y += BRICK_HEIGHT + GAP; //generates rows
 
-      } //end for(rows)
+   	   } //end for(rows)
    } //end pain
 } //public class ton_of_bricks_for
