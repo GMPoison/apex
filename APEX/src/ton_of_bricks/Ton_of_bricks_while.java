@@ -1,49 +1,67 @@
 package ton_of_bricks;
 
-import java.applet.Applet;
+import java.applet.*;
 import java.awt.*;
 
-public class Ton_of_bricks_while extends Applet{
+public class Ton_of_bricks_while extends Applet {
+
+	private static final long serialVersionUID = 1L;
 	
-   private static final long serialVersionUID = 1L;
-  
-   public static final int START_X = 0;
-   public static final int START_Y = 0;
-   public static final int BRICK_WIDTH = 30;
-   public static final int BRICK_HEIGHT = 15;
-   public static final int DISPLAY_WIDTH = 600;
-   public static final int DISPLAY_HEIGHT = 600;
-   public static final int GAP = 5;
+	public int START_X = 0;
+	public int START_Y = 0;
+	public static final int DISPLAY_WIDTH = 600;
+	public static final int DISPLAY_HEIGHT = 600;
+	public static final int BRICK_WIDTH = 60;
+	public static final int BRICK_HEIGHT = 30;
+	public int GAP = 5;
 
-   	public void paint(Graphics g){
-	   
-   	   int x = START_X;
-   	   int y = START_Y;
-   		     
-   	   setBackground(Color.BLACK);
-   	   g.setColor(Color.MAGENTA); 
-      
-   	   int row = 1;
-   	   int col = 1;
-   	   
-   	   while (row <= DISPLAY_WIDTH){ //while row is less than windows width, increase rows
-   		   row++;
-   			
-   	   		while (col <= DISPLAY_HEIGHT) //while col is less than windows height, increase cols 
-   	   			col++;         	 
-   					
-   	   			g.fillRect (x, y, BRICK_WIDTH, BRICK_HEIGHT); //drawing bricks
-            
-   				x += BRICK_WIDTH + GAP; //generates columns
-   	   		
+	public void init(){
+		resize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+		setBackground(Color.darkGray);
+	}
 
-   			if (row%2 == 0)
-   				x = START_X;
-   			else
-   				x = START_X - BRICK_WIDTH/2 - GAP/2; //offsets bricks  
+	public void paint(Graphics g){
+		int currentX = 0;
+		int currentY = 0;
+		boolean checkIfRow = true;
 
-   				y += BRICK_HEIGHT + GAP; //generates rows
-   	   		
-   	   } //end for(rows)
-   } //end pain
-}//public class ton_of_bricks_for
+		g.setColor(Color.RED);
+
+		while (currentX <= DISPLAY_HEIGHT || currentY <= DISPLAY_WIDTH){
+
+			if (currentX > DISPLAY_HEIGHT){
+				
+				currentY += BRICK_HEIGHT + GAP;
+
+				if (checkIfRow){
+					
+					checkIfRow = false;
+					currentX = START_X - (BRICK_WIDTH / 2);
+				}
+				else{
+					
+					currentX = START_X;
+					checkIfRow = true;
+				}
+
+				g.fillRect(currentX, currentY, BRICK_WIDTH, BRICK_HEIGHT);
+
+			}
+			else if (currentX == START_X || currentX == START_X / 2){
+				
+				g.fillRect(currentX, currentY, BRICK_WIDTH, BRICK_HEIGHT);
+				currentX += BRICK_WIDTH + GAP;
+			}
+			else{
+				
+				currentX += BRICK_WIDTH + GAP;
+				g.fillRect(currentX, currentY, BRICK_WIDTH, BRICK_HEIGHT);
+			}
+			
+			g.fillRect(currentX, currentY, BRICK_WIDTH, BRICK_HEIGHT);
+
+		} //end while
+
+	} //end paint
+
+} //end public class Ton_of_bricks_while

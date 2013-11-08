@@ -13,19 +13,19 @@ public class Ton_of_bricks_for extends Applet{
    public static final int BRICK_HEIGHT = 30;
    public static final int DISPLAY_WIDTH = 600;
    public static final int DISPLAY_HEIGHT = 600;
-   public static final int GAP = 10;
+   public static final int GAP = 5;
 
    public void init(){
 	   resize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-	   setBackground(Color.BLACK);
+	   setBackground(Color.GRAY);
    }
    
    public void paint(Graphics g){
 	   
-   	   int x = START_X;
-   	   int y = START_Y;
+   	   int x = 0;
+   	   int y = 0;
    		  	   
-   	   g.setColor(Color.GREEN); 
+   	   g.setColor(Color.RED); 
       
    	   for (int row = 1; row <= DISPLAY_WIDTH; row++){ //while row is less than windows width, increase rows
 

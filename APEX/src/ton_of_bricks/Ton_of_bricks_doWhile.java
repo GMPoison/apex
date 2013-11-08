@@ -1,31 +1,67 @@
 package ton_of_bricks;
 
-import java.applet.Applet;
+import java.applet.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
-public class Ton_of_bricks_doWhile extends Applet{
+public class Ton_of_bricks_doWhile extends Applet {
 
-		private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
+	
+	public int START_X = 0;
+	public int START_Y = 0;
+	public static final int DISPLAY_WIDTH = 600;
+	public static final int DISPLAY_HEIGHT = 600;
+	public static final int BRICK_WIDTH = 60;
+	public static final int BRICK_HEIGHT = 30;
+	public int GAP = 5;
 
-			public static final int DISPLAY_WIDTH = 600;
-			public static final int DISPLAY_HEIGHT = 600;
-		
-			public void init(){
+	public void init(){
+		resize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+		setBackground(Color.darkGray);
+	}
+
+	public void paint(Graphics g){
+		int currentX = 0;
+		int currentY = 0;
+		boolean checkIfRow = true;
+
+		g.setColor(Color.RED);
+
+		do{
+
+			if (currentX > DISPLAY_HEIGHT){
 				
+				currentY += BRICK_HEIGHT + GAP;
+
+				if (checkIfRow){
+					
+					checkIfRow = false;
+					currentX = START_X - (BRICK_WIDTH / 2);
+				}
+				else{
+					
+					currentX = START_X;
+					checkIfRow = true;
+				}
+
+				g.fillRect(currentX, currentY, BRICK_WIDTH, BRICK_HEIGHT);
+
+			}
+			else if (currentX == START_X || currentX == START_X / 2){
 				
-			} // end init
-			public void paint(Graphics g){
+				g.fillRect(currentX, currentY, BRICK_WIDTH, BRICK_HEIGHT);
+				currentX += BRICK_WIDTH + GAP;
+			}
+			else{
 				
-				resize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-								
-			} //end paint
-			
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				currentX += BRICK_WIDTH + GAP;
+				g.fillRect(currentX, currentY, BRICK_WIDTH, BRICK_HEIGHT);
 			}
 			
-}
+			g.fillRect(currentX, currentY, BRICK_WIDTH, BRICK_HEIGHT);
 
+		} //end do
+		while (currentX <= DISPLAY_HEIGHT || currentY <= DISPLAY_WIDTH);
+	} //end paint
 
+} //end public class Ton_of_bricks_doWhile
