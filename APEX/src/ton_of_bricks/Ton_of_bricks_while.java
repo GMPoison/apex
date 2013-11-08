@@ -17,7 +17,7 @@ public class Ton_of_bricks_while extends Applet {
 
 	public void init(){
 		resize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-		setBackground(Color.darkGray);
+		setBackground(Color.GRAY);
 	}
 
 	public void paint(Graphics g){
